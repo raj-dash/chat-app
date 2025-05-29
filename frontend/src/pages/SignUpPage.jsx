@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 import { useAuthStore } from "../store/useAuthStore";
-import { Eye, EyeOff, Lock, Mail, MessageSquare, User } from "lucide-react";
+import {
+  Eye,
+  EyeOff,
+  Loader2,
+  Lock,
+  Mail,
+  MessageSquare,
+  User,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 
 import AuthImagePattern from "../components/AuthImagePattern";
@@ -22,7 +30,7 @@ const SignUpPage = () => {
     if (!/\S+@\S+\.\S+/.test(formData.email))
       return toast.error("Invalid email format");
     if (!formData.password) return toast.error("Password is required");
-    if (!formData.password.length < 6)
+    if (formData.password.length < 6)
       return toast.error("Password must be at least 6 characters");
 
     return true;
